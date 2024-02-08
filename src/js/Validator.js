@@ -1,21 +1,18 @@
-class Validator {
-  constructor(log) {
-    this.log = log;
-  }
-
-  validateUsername() {
-    const num3 = /^(?!.*\d{4})/.test(this.log);
-    const numStartFinish = /^\d|\d$|^-|-$|^_|_$/.test(this.log);
-    const allowance = /[^A-Za-z0-9_-]/.test(this.log);
-    if (num3 === false || numStartFinish === true || allowance === true) {
-      throw new Error('Логин не соответсвует требованиям');
+function Validator(num) {
+  let numRes;
+  const reg = /^[\d ()+-]+$/;
+  if (reg.test(num)) {
+    if (/^\+\d{2}/.test(num)) {
+      numRes = num.replace(/[() -]/g, '');
     } else {
-      return (`Ваш логин: ${this.log} соответствует требованиям.`);
+      numRes = num.replace(/[() -]/g, '');
+      numRes = numRes.replace(/^8/, '+7');
     }
+  } else {
+    throw new Error('Присутствуют недопустимые символы.');
   }
-}
 
-/* const logUs = new Validator('NikitaSB014s');
-logUs.validateUsername(); */
+  return numRes;
+}
 
 export default Validator;
