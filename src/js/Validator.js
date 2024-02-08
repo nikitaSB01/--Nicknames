@@ -1,8 +1,3 @@
-/*
-1  Допустимы.. латинские буквы | - | _ |(0-9);
-2  Недопустимо.. подряд более трёх цифр | начин и заканч цифрами | _ | -
-*/
-
 class Validator {
   constructor(log) {
     this.log = log;
@@ -15,12 +10,12 @@ class Validator {
     if (num3 === false || numStartFinish === true || allowance === true) {
       throw new Error('Логин не соответсвует требованиям');
     } else {
-      return (`Ваш логин '${this.log}' соответствует требованиям.`);
+      return (`Ваш логин: ${this.log} соответствует требованиям.`);
     }
   }
 }
 
-const logUs = new Validator('NikitaSB014s');
-logUs.validateUsername();
+/* const logUs = new Validator('NikitaSB014s');
+logUs.validateUsername(); */
 
-//  export default Validator;
+export default Validator;
